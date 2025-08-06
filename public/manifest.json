@@ -1,0 +1,38 @@
+{
+  "_virtual_pwa-register-2e569rbt.js": {
+    "file": "assets/virtual_pwa-register-2e569rbt.js",
+    "name": "virtual_pwa-register",
+    "dynamicImports": [
+      "node_modules/workbox-window/build/workbox-window.prod.es5.mjs"
+    ]
+  },
+  "node_modules/workbox-window/build/workbox-window.prod.es5.mjs": {
+    "file": "assets/workbox-window.prod.es5-B9K5rw8f.js",
+    "name": "workbox-window.prod.es5",
+    "src": "node_modules/workbox-window/build/workbox-window.prod.es5.mjs",
+    "isDynamicEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-D7_oSCHL.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-BgE9zYj4.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_virtual_pwa-register-2e569rbt.js"
+    ]
+  },
+  "resources/js/pwa.js": {
+    "file": "assets/pwa-DUSWrndM.js",
+    "name": "pwa",
+    "src": "resources/js/pwa.js",
+    "isEntry": true,
+    "imports": [
+      "_virtual_pwa-register-2e569rbt.js"
+    ]
+  }
+}
