@@ -174,6 +174,16 @@ class transferController extends Controller
     public function destroy($id)
     {
         try {
+
+            // Kembalikan saldo yang dihapus ke aset tabungan
+            $transfer = $this->transferService->findTransfer($id);
+            $asal = $this->asetTabunganService->findTabungan($transfer->asal_aset_id);
+            $tujuan = $this->asetTabunganService->findTabungan($transfer->tujuan_aset_id);
+            $asal->saldo += $transfer->jumlah;
+            $asal->save();
+            $tujuan->saldo -= $transfer->jumlah;
+            $tujuan->save();
+
             // Cari role berdasarkan ID
             $user = $this->transferService->findTransfer($id);
             // Hapus role
