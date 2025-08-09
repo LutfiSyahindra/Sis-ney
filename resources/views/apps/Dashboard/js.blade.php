@@ -295,8 +295,79 @@
 
     }
 
+
+    function loadAsetTabungan() {
+        $.ajax({
+            url: '/apps/dashboard/AsetTabungan',
+            method: 'GET',
+            success: function(data) {
+                let html = '';
+
+                data.forEach(function(aset) {
+                    let iconClass = 'fa-solid fa-wallet';
+                    let colorClass = 'text-secondary';
+
+                    if (aset.jenis_tabungan === 'Tabungan') {
+                        iconClass = 'fa-solid fa-building-columns';
+                        if (aset.nama_tabungan.toLowerCase().includes('bca')) {
+                            colorClass = 'text-primary';
+                        } else if (aset.nama_tabungan.toLowerCase().includes('mandiri')) {
+                            colorClass = 'text-warning';
+                        } else {
+                            colorClass = 'text-info';
+                        }
+                    } else if (aset.jenis_tabungan === 'Uang Tunai') {
+                        iconClass = 'fa-solid fa-money-bill-wave';
+                        colorClass = 'text-success';
+                    }
+
+                    html += `
+                    <div class="swiper-slide">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="card-title mb-0">
+                                    <i class="${iconClass} me-2 ${colorClass}"></i>
+                                    ${aset.nama_tabungan}
+                                </h6>
+                                <h4 class="mt-3 mb-0">${Number(aset.saldo).toLocaleString('id-ID')}</h4>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                });
+
+                $('#asetTabunganContainer').html(html);
+
+                // Inisialisasi Swiper tanpa tombol panah
+                new Swiper(".mySwiper", {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                    loop: false,
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                    },
+                    breakpoints: {
+                        0: {
+                            slidesPerView: 1
+                        },
+                        768: {
+                            slidesPerView: 2
+                        }
+                    }
+                });
+            },
+            error: function(err) {
+                console.error('Gagal memuat data aset tabungan', err);
+            }
+        });
+    }
+
+
+
     document.addEventListener("DOMContentLoaded", function() {
         feather.replace();
+
 
         // Inisialisasi Date Range Picker
         $('#dateRangePicker').daterangepicker({
@@ -341,5 +412,6 @@
         window.selectedStartDate = startDate.format('YYYY-MM-DD');
         window.selectedEndDate = endDate.format('YYYY-MM-DD');
         loadDataWithRange(window.selectedStartDate, window.selectedEndDate);
+        loadAsetTabungan();
     });
 </script>

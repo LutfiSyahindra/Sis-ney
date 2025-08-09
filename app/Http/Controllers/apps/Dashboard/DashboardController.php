@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\apps\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Services\asetTabungan\asetTabunganService;
 use App\Services\Budgets\DaftarBudgets\DaftarBudgetsService;
 use App\Services\Budgets\KategoriBudgets\KategoriBudgetsService;
 use App\Services\kategoriTransaksi\kategoriTransaksiService;
@@ -13,14 +14,16 @@ use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
-    protected $kategoriTransaksiService,$DaftarBudgetsService,$KategoriBudgetsService,$transaksiService;
+    protected $kategoriTransaksiService,$DaftarBudgetsService,$KategoriBudgetsService,$transaksiService, $asetTabunganService;
 
-    public function __construct(kategoriTransaksiService $kategoriTransaksiService, DaftarBudgetsService $DaftarBudgetsService, KategoriBudgetsService $KategoriBudgetsService, transaksiService $transaksiService)
+    public function __construct(kategoriTransaksiService $kategoriTransaksiService, DaftarBudgetsService $DaftarBudgetsService, KategoriBudgetsService $KategoriBudgetsService, transaksiService $transaksiService, asetTabunganService $asetTabunganService)
+
     {
         $this->kategoriTransaksiService = $kategoriTransaksiService;
         $this->DaftarBudgetsService = $DaftarBudgetsService;
         $this->KategoriBudgetsService = $KategoriBudgetsService;
         $this->transaksiService = $transaksiService;
+        $this->asetTabunganService = $asetTabunganService;
     }
     /**
      * Display a listing of the resource.
@@ -207,6 +210,12 @@ class DashboardController extends Controller
             'grouped_pengeluaran' => $pengeluaranPerBulan,
             'total_per_bulan' => $totalPerBulan,
         ]);
+    }
+    
+    public function getAsetTabungan (){
+        $tabungan = $this->asetTabunganService->getAllAsetTabungan();
+        Log::info($tabungan);
+        return response()->json($tabungan);
     }
 
 

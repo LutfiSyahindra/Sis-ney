@@ -4,6 +4,8 @@
     @include("template.plugin.dataTables")
     @include("template.plugin.sweetAlert2")
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 @endpush
 
 @section("content")
@@ -97,6 +99,28 @@
     </div> <!-- row -->
 
     <div class="row">
+        <div class="col-12 col-xl-12 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title mb-3">Aset Tabungan</h6>
+
+                    <!-- Slider container -->
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper" id="asetTabunganContainer">
+                            <!-- Kartu aset akan dimasukkan via AJAX -->
+                        </div>
+                        <!-- Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
         <div class="col-lg-12 col-xl-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
@@ -120,5 +144,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     @include("apps.Dashboard.js")
 @endpush

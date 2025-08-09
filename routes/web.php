@@ -138,6 +138,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard/pemasukan', [DashboardController::class, 'Pemasukan'])->name('dashboard.Pemasukan');
         Route::get('/dashboard/peengeluaranPerHari', [DashboardController::class, 'PengeluaranPerHari'])->name('dashboard.peengeluaranPerHari');
         Route::get('/dashboard/peengeluaranPerBulan', [DashboardController::class, 'PengeluaranPerBulan'])->name('dashboard.peengeluaranPerBulan');
+        Route::get('/dashboard/AsetTabungan', [DashboardController::class, 'getAsetTabungan'])->name('dashboard.AsetTabungan');
 
         // Budget Plan
         Route::get('/budgetPlan/budgetPlan', [BudgetPlanController::class, 'BudgetPlan'])->name('budgetPlan.budgetPlan');
