@@ -17,7 +17,8 @@
                     });
                     // Re-init select2
                     asetSelect.select2({
-                        dropdownParent: $('#transaksiModal')
+                        dropdownParent: $('#transaksiModal'),
+                        width: '100%'
                     });
                 },
                 error: function() {
@@ -60,7 +61,8 @@
                     }
 
                     kategoriSelect.select2({
-                        dropdownParent: $('#transaksiModal')
+                        dropdownParent: $('#transaksiModal'),
+                        width: '100%'
                     });
 
                     // 👇 Tambahkan baris ini agar kategori terpilih saat edit

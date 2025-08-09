@@ -244,7 +244,8 @@
 
                     // Re-init select2
                     asetSelect.select2({
-                        dropdownParent: $('#DepositModal')
+                        dropdownParent: $('#DepositModal'),
+                        width: '100%'
                     });
                 },
                 error: function() {
@@ -270,7 +271,8 @@
                     });
                     // Re-init select2
                     asetSelect.select2({
-                        dropdownParent: $('#DepositModal')
+                        dropdownParent: $('#DepositModal'),
+                        width: '100%'
                     });
                 },
                 error: function() {
